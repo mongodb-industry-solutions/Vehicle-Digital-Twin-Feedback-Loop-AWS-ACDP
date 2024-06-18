@@ -1,0 +1,8 @@
+{
+  "aws-cms-mongo-atlas-stack": {
+    "stdUrl": "mongodb://ac-jozfhna-shard-00-00.p1122qk.mongodb.net:27017,ac-jozfhna-shard-00-01.p1122qk.mongodb.net:27017,ac-jozfhna-shard-00-02.p1122qk.mongodb.net:27017/?ssl=true&authSource=admin&replicaSet=atlas-h55wa8-shard-0",
+    "ExportsOutputFnGetAttAtlasBasicpyl3clusterAtlasBasicpyl3DAE717F4ConnectionStringsStandardSrv86D97E1D": "mongodb+srv://connected-vehicle-db.p1122qk.mongodb.net",
+    "projectId": "666047c08f0bb839b0227eea",
+    "stdSrvUrl": "mongodb+srv://connected-vehicle-db.p1122qk.mongodb.net"
+  }
+}

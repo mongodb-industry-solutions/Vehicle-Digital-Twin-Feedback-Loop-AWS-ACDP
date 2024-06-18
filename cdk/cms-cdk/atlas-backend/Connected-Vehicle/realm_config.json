@@ -1,0 +1,7 @@
+{
+    "config_version": 20210101,
+    "app_id": "XXX",
+    "name": "XXX",
+    "provider_region": "XXX",
+    "deployment_model": "LOCAL"
+}

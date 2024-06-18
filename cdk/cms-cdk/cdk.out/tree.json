@@ -1,0 +1,1032 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "aws-cms-mongo-atlas-stack": {
+        "id": "aws-cms-mongo-atlas-stack",
+        "path": "aws-cms-mongo-atlas-stack",
+        "children": {
+          "AtlasBasic-py-l3": {
+            "id": "AtlasBasic-py-l3",
+            "path": "aws-cms-mongo-atlas-stack/AtlasBasic-py-l3",
+            "children": {
+              "project-AtlasBasic-py-l3": {
+                "id": "project-AtlasBasic-py-l3",
+                "path": "aws-cms-mongo-atlas-stack/AtlasBasic-py-l3/project-AtlasBasic-py-l3",
+                "constructInfo": {
+                  "fqn": "awscdk-resources-mongodbatlas.CfnProject",
+                  "version": "1.2.0"
+                }
+              },
+              "cluster-AtlasBasic-py-l3": {
+                "id": "cluster-AtlasBasic-py-l3",
+                "path": "aws-cms-mongo-atlas-stack/AtlasBasic-py-l3/cluster-AtlasBasic-py-l3",
+                "constructInfo": {
+                  "fqn": "awscdk-resources-mongodbatlas.CfnCluster",
+                  "version": "1.2.0"
+                }
+              },
+              "db-user-AtlasBasic-py-l3": {
+                "id": "db-user-AtlasBasic-py-l3",
+                "path": "aws-cms-mongo-atlas-stack/AtlasBasic-py-l3/db-user-AtlasBasic-py-l3",
+                "constructInfo": {
+                  "fqn": "awscdk-resources-mongodbatlas.CfnDatabaseUser",
+                  "version": "1.2.0"
+                }
+              },
+              "ip-access-list-AtlasBasic-py-l3": {
+                "id": "ip-access-list-AtlasBasic-py-l3",
+                "path": "aws-cms-mongo-atlas-stack/AtlasBasic-py-l3/ip-access-list-AtlasBasic-py-l3",
+                "constructInfo": {
+                  "fqn": "awscdk-resources-mongodbatlas.CfnProjectIpAccessList",
+                  "version": "1.2.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "awscdk-resources-mongodbatlas.AtlasBasic",
+              "version": "1.2.0"
+            }
+          },
+          "stdUrl": {
+            "id": "stdUrl",
+            "path": "aws-cms-mongo-atlas-stack/stdUrl",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.140.0"
+            }
+          },
+          "stdSrvUrl": {
+            "id": "stdSrvUrl",
+            "path": "aws-cms-mongo-atlas-stack/stdSrvUrl",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.140.0"
+            }
+          },
+          "projectId": {
+            "id": "projectId",
+            "path": "aws-cms-mongo-atlas-stack/projectId",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.140.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "aws-cms-mongo-atlas-stack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "aws-cms-mongo-atlas-stack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.140.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "aws-cms-mongo-atlas-stack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "Exports": {
+            "id": "Exports",
+            "path": "aws-cms-mongo-atlas-stack/Exports",
+            "children": {
+              "Output{\"Fn::GetAtt\":[\"AtlasBasicpyl3clusterAtlasBasicpyl3DAE717F4\",\"ConnectionStrings.StandardSrv\"]}": {
+                "id": "Output{\"Fn::GetAtt\":[\"AtlasBasicpyl3clusterAtlasBasicpyl3DAE717F4\",\"ConnectionStrings.StandardSrv\"]}",
+                "path": "aws-cms-mongo-atlas-stack/Exports/Output{\"Fn::GetAtt\":[\"AtlasBasicpyl3clusterAtlasBasicpyl3DAE717F4\",\"ConnectionStrings.StandardSrv\"]}",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "aws-cms-mongo-atlas-stack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.140.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "aws-cms-mongo-atlas-stack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.140.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.140.0"
+        }
+      },
+      "aws-cms-bucket-stack": {
+        "id": "aws-cms-bucket-stack",
+        "path": "aws-cms-bucket-stack",
+        "children": {
+          "dataBucket": {
+            "id": "dataBucket",
+            "path": "aws-cms-bucket-stack/dataBucket",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-bucket-stack/dataBucket/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "bucketName": "cms-bucket-demo",
+                    "tags": [
+                      {
+                        "key": "aws-cdk:auto-delete-objects",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                  "version": "2.140.0"
+                }
+              },
+              "Policy": {
+                "id": "Policy",
+                "path": "aws-cms-bucket-stack/dataBucket/Policy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "aws-cms-bucket-stack/dataBucket/Policy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
+                      "aws:cdk:cloudformation:props": {
+                        "bucket": {
+                          "Ref": "dataBucketD8691F4E"
+                        },
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "s3:DeleteObject*",
+                                "s3:GetBucket*",
+                                "s3:List*",
+                                "s3:PutBucketPolicy"
+                              ],
+                              "Effect": "Allow",
+                              "Principal": {
+                                "AWS": {
+                                  "Fn::GetAtt": [
+                                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                                    "Arn"
+                                  ]
+                                }
+                              },
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "dataBucketD8691F4E",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "dataBucketD8691F4E",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.CfnBucketPolicy",
+                      "version": "2.140.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.BucketPolicy",
+                  "version": "2.140.0"
+                }
+              },
+              "AutoDeleteObjectsCustomResource": {
+                "id": "AutoDeleteObjectsCustomResource",
+                "path": "aws-cms-bucket-stack/dataBucket/AutoDeleteObjectsCustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "aws-cms-bucket-stack/dataBucket/AutoDeleteObjectsCustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.140.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3.Bucket",
+              "version": "2.140.0"
+            }
+          },
+          "Custom::S3AutoDeleteObjectsCustomResourceProvider": {
+            "id": "Custom::S3AutoDeleteObjectsCustomResourceProvider",
+            "path": "aws-cms-bucket-stack/Custom::S3AutoDeleteObjectsCustomResourceProvider",
+            "children": {
+              "Staging": {
+                "id": "Staging",
+                "path": "aws-cms-bucket-stack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Staging",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.AssetStaging",
+                  "version": "2.140.0"
+                }
+              },
+              "Role": {
+                "id": "Role",
+                "path": "aws-cms-bucket-stack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.140.0"
+                }
+              },
+              "Handler": {
+                "id": "Handler",
+                "path": "aws-cms-bucket-stack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CustomResourceProviderBase",
+              "version": "2.140.0"
+            }
+          },
+          "S3SourceBucket": {
+            "id": "S3SourceBucket",
+            "path": "aws-cms-bucket-stack/S3SourceBucket",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.140.0"
+            }
+          },
+          "dataSourceBucketUrl": {
+            "id": "dataSourceBucketUrl",
+            "path": "aws-cms-bucket-stack/dataSourceBucketUrl",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.140.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "aws-cms-bucket-stack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "aws-cms-bucket-stack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.140.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "aws-cms-bucket-stack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "aws-cms-bucket-stack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.140.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "aws-cms-bucket-stack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.140.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.140.0"
+        }
+      },
+      "aws-cms-lambda-stack": {
+        "id": "aws-cms-lambda-stack",
+        "path": "aws-cms-lambda-stack",
+        "children": {
+          "Secret": {
+            "id": "Secret",
+            "path": "aws-cms-lambda-stack/Secret",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-lambda-stack/Secret/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::SecretsManager::Secret",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "CMS_ATLAS_URL",
+                    "secretString": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "mongodb+srv://cmsist:pwd1234@",
+                          {
+                            "Fn::Select": [
+                              2,
+                              {
+                                "Fn::Split": [
+                                  "/",
+                                  {
+                                    "Fn::ImportValue": "aws-cms-mongo-atlas-stack:ExportsOutputFnGetAttAtlasBasicpyl3clusterAtlasBasicpyl3DAE717F4ConnectionStringsStandardSrv86D97E1D"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_secretsmanager.CfnSecret",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_secretsmanager.Secret",
+              "version": "2.140.0"
+            }
+          },
+          "cdk_connected_vehicle_atlas_to_sagemaker_role": {
+            "id": "cdk_connected_vehicle_atlas_to_sagemaker_role",
+            "path": "aws-cms-lambda-stack/cdk_connected_vehicle_atlas_to_sagemaker_role",
+            "children": {
+              "Importcdk_connected_vehicle_atlas_to_sagemaker_role": {
+                "id": "Importcdk_connected_vehicle_atlas_to_sagemaker_role",
+                "path": "aws-cms-lambda-stack/cdk_connected_vehicle_atlas_to_sagemaker_role/Importcdk_connected_vehicle_atlas_to_sagemaker_role",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.140.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-lambda-stack/cdk_connected_vehicle_atlas_to_sagemaker_role/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": [
+                              "events.amazonaws.com",
+                              "lambda.amazonaws.com",
+                              "sagemaker.amazonaws.com"
+                            ]
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonEventBridgeFullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/SecretsManagerReadWrite"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonSageMakerFullAccess"
+                          ]
+                        ]
+                      }
+                    ],
+                    "policies": [
+                      {
+                        "policyName": "AssumeRolePolicy",
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Resource": "*"
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        }
+                      }
+                    ],
+                    "roleName": "cdk_connected_vehicle_atlas_to_sagemaker_role"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.140.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "aws-cms-lambda-stack/cdk_connected_vehicle_atlas_to_sagemaker_role/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "aws-cms-lambda-stack/cdk_connected_vehicle_atlas_to_sagemaker_role/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "secretsmanager:DescribeSecret",
+                                "secretsmanager:GetSecretValue"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": {
+                                "Ref": "SecretA720EF05"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "cdkconnectedvehicleatlastosagemakerroleDefaultPolicy340FC708",
+                        "roles": [
+                          {
+                            "Ref": "cdkconnectedvehicleatlastosagemakerrole58F4A134"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.140.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.140.0"
+            }
+          },
+          "pull_from_mdb": {
+            "id": "pull_from_mdb",
+            "path": "aws-cms-lambda-stack/pull_from_mdb",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "aws-cms-lambda-stack/pull_from_mdb/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "aws-cms-lambda-stack/pull_from_mdb/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.140.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "aws-cms-lambda-stack/pull_from_mdb/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.140.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.140.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-lambda-stack/pull_from_mdb/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "5062d8b1a1ad9816c68ca64ee5c763810d3bb7dfa1fb4803ea205204eea55f56.zip"
+                    },
+                    "environment": {
+                      "variables": {
+                        "PYTHONPATH": "dependencies",
+                        "LOG_LEVEL": "INFO",
+                        "APP_ENV": "dev",
+                        "REGION_NAME": "eu-central-1",
+                        "MODEL_ENDPOINT": "sagemaker-soln-fpm-js-1234-demo-endpoint",
+                        "EVENTBUS_NAME": "cli_pushing_to_mongodb"
+                      }
+                    },
+                    "handler": "lambda_pull_from_mdb.handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "cdkconnectedvehicleatlastosagemakerrole58F4A134",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.12",
+                    "timeout": 60
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.140.0"
+                }
+              },
+              "AllowEventBridge": {
+                "id": "AllowEventBridge",
+                "path": "aws-cms-lambda-stack/pull_from_mdb/AllowEventBridge",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "pullfrommdb93A0DEF6",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "events.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::GetAtt": [
+                        "sagemakerpull5EA4B586",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.140.0"
+            }
+          },
+          "CMS_ATLAS_URL": {
+            "id": "CMS_ATLAS_URL",
+            "path": "aws-cms-lambda-stack/CMS_ATLAS_URL",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.140.0"
+            }
+          },
+          "push_to_mdb": {
+            "id": "push_to_mdb",
+            "path": "aws-cms-lambda-stack/push_to_mdb",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "aws-cms-lambda-stack/push_to_mdb/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "aws-cms-lambda-stack/push_to_mdb/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.140.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "aws-cms-lambda-stack/push_to_mdb/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.140.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.140.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-lambda-stack/push_to_mdb/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "5062d8b1a1ad9816c68ca64ee5c763810d3bb7dfa1fb4803ea205204eea55f56.zip"
+                    },
+                    "environment": {
+                      "variables": {
+                        "PYTHONPATH": "dependencies",
+                        "LOG_LEVEL": "INFO",
+                        "APP_ENV": "dev",
+                        "region_name": "eu-central-1",
+                        "model_endpoint": "sagemaker-soln-fpm-js-1234-demo-endpoint"
+                      }
+                    },
+                    "handler": "lambda_push_to_mdb.handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "cdkconnectedvehicleatlastosagemakerrole58F4A134",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.12",
+                    "timeout": 60
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.140.0"
+                }
+              },
+              "AllowEventBridge": {
+                "id": "AllowEventBridge",
+                "path": "aws-cms-lambda-stack/push_to_mdb/AllowEventBridge",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "pushtomdb25E95FA7",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "events.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::GetAtt": [
+                        "clipushtolambdaDD443E49",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.140.0"
+            }
+          },
+          "cli_pulling_from_mongodb": {
+            "id": "cli_pulling_from_mongodb",
+            "path": "aws-cms-lambda-stack/cli_pulling_from_mongodb",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-lambda-stack/cli_pulling_from_mongodb/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Events::EventBus",
+                  "aws:cdk:cloudformation:props": {
+                    "eventSourceName": "aws.partner/mongodb.com/stitch.trigger/6660485336339d17cb1ff766",
+                    "name": "aws.partner/mongodb.com/stitch.trigger/6660485336339d17cb1ff766"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_events.CfnEventBus",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_events.EventBus",
+              "version": "2.140.0"
+            }
+          },
+          "sagemaker-pull": {
+            "id": "sagemaker-pull",
+            "path": "aws-cms-lambda-stack/sagemaker-pull",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-lambda-stack/sagemaker-pull/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Events::Rule",
+                  "aws:cdk:cloudformation:props": {
+                    "eventBusName": {
+                      "Ref": "clipullingfrommongodb078ED31F"
+                    },
+                    "eventPattern": {
+                      "source": [
+                        "aws.partner/mongodb.com"
+                      ]
+                    },
+                    "state": "ENABLED",
+                    "targets": [
+                      {
+                        "id": "Target0",
+                        "arn": {
+                          "Fn::GetAtt": [
+                            "pullfrommdb93A0DEF6",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_events.CfnRule",
+                  "version": "2.140.0"
+                }
+              },
+              "AllowEventRuleawscmslambdastackpullfrommdb51334CFB": {
+                "id": "AllowEventRuleawscmslambdastackpullfrommdb51334CFB",
+                "path": "aws-cms-lambda-stack/sagemaker-pull/AllowEventRuleawscmslambdastackpullfrommdb51334CFB",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "pullfrommdb93A0DEF6",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "events.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::GetAtt": [
+                        "sagemakerpull5EA4B586",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_events.Rule",
+              "version": "2.140.0"
+            }
+          },
+          "cli_pushing_to_mongodb": {
+            "id": "cli_pushing_to_mongodb",
+            "path": "aws-cms-lambda-stack/cli_pushing_to_mongodb",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-lambda-stack/cli_pushing_to_mongodb/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Events::EventBus",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "cli_pushing_to_mongodb"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_events.CfnEventBus",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_events.EventBus",
+              "version": "2.140.0"
+            }
+          },
+          "cli_push_to_lambda": {
+            "id": "cli_push_to_lambda",
+            "path": "aws-cms-lambda-stack/cli_push_to_lambda",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "aws-cms-lambda-stack/cli_push_to_lambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Events::Rule",
+                  "aws:cdk:cloudformation:props": {
+                    "eventBusName": {
+                      "Ref": "clipushingtomongodb5E4AB8A2"
+                    },
+                    "eventPattern": {
+                      "detail-type": [
+                        "user-preferences"
+                      ],
+                      "source": [
+                        "user-event"
+                      ]
+                    },
+                    "state": "ENABLED",
+                    "targets": [
+                      {
+                        "id": "Target0",
+                        "arn": {
+                          "Fn::GetAtt": [
+                            "pushtomdb25E95FA7",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_events.CfnRule",
+                  "version": "2.140.0"
+                }
+              },
+              "AllowEventRuleawscmslambdastackpushtomdb77008254": {
+                "id": "AllowEventRuleawscmslambdastackpushtomdb77008254",
+                "path": "aws-cms-lambda-stack/cli_push_to_lambda/AllowEventRuleawscmslambdastackpushtomdb77008254",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "pushtomdb25E95FA7",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "events.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::GetAtt": [
+                        "clipushtolambdaDD443E49",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_events.Rule",
+              "version": "2.140.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "aws-cms-lambda-stack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "aws-cms-lambda-stack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.140.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "aws-cms-lambda-stack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.140.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "aws-cms-lambda-stack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.140.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "aws-cms-lambda-stack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.140.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.140.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.3.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.140.0"
+    }
+  }
+}

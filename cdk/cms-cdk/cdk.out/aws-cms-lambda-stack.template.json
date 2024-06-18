@@ -1,0 +1,655 @@
+{
+ "Description": "Lambdas for CMS Digital Twin Solution",
+ "Resources": {
+  "SecretA720EF05": {
+   "Type": "AWS::SecretsManager::Secret",
+   "Properties": {
+    "Name": "CMS_ATLAS_URL",
+    "SecretString": {
+     "Fn::Join": [
+      "",
+      [
+       "mongodb+srv://cmsist:pwd1234@",
+       {
+        "Fn::Select": [
+         2,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::ImportValue": "aws-cms-mongo-atlas-stack:ExportsOutputFnGetAttAtlasBasicpyl3clusterAtlasBasicpyl3DAE717F4ConnectionStringsStandardSrv86D97E1D"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/Secret/Resource"
+   }
+  },
+  "cdkconnectedvehicleatlastosagemakerrole58F4A134": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": [
+         "events.amazonaws.com",
+         "lambda.amazonaws.com",
+         "sagemaker.amazonaws.com"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEventBridgeFullAccess"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/SecretsManagerReadWrite"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonSageMakerFullAccess"
+       ]
+      ]
+     }
+    ],
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": "sts:AssumeRole",
+         "Effect": "Allow",
+         "Resource": "*"
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "AssumeRolePolicy"
+     }
+    ],
+    "RoleName": "cdk_connected_vehicle_atlas_to_sagemaker_role"
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/cdk_connected_vehicle_atlas_to_sagemaker_role/Resource"
+   }
+  },
+  "cdkconnectedvehicleatlastosagemakerroleDefaultPolicy340FC708": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "secretsmanager:DescribeSecret",
+        "secretsmanager:GetSecretValue"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Ref": "SecretA720EF05"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "cdkconnectedvehicleatlastosagemakerroleDefaultPolicy340FC708",
+    "Roles": [
+     {
+      "Ref": "cdkconnectedvehicleatlastosagemakerrole58F4A134"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/cdk_connected_vehicle_atlas_to_sagemaker_role/DefaultPolicy/Resource"
+   }
+  },
+  "pullfrommdb93A0DEF6": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "5062d8b1a1ad9816c68ca64ee5c763810d3bb7dfa1fb4803ea205204eea55f56.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "PYTHONPATH": "dependencies",
+      "LOG_LEVEL": "INFO",
+      "APP_ENV": "dev",
+      "REGION_NAME": "eu-central-1",
+      "MODEL_ENDPOINT": "sagemaker-soln-fpm-js-1234-demo-endpoint",
+      "EVENTBUS_NAME": "cli_pushing_to_mongodb"
+     }
+    },
+    "Handler": "lambda_pull_from_mdb.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "cdkconnectedvehicleatlastosagemakerrole58F4A134",
+      "Arn"
+     ]
+    },
+    "Runtime": "python3.12",
+    "Timeout": 60
+   },
+   "DependsOn": [
+    "cdkconnectedvehicleatlastosagemakerroleDefaultPolicy340FC708",
+    "cdkconnectedvehicleatlastosagemakerrole58F4A134"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/pull_from_mdb/Resource",
+    "aws:asset:path": "asset.5062d8b1a1ad9816c68ca64ee5c763810d3bb7dfa1fb4803ea205204eea55f56",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "pullfrommdbAllowEventBridge791F36C9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "pullfrommdb93A0DEF6",
+      "Arn"
+     ]
+    },
+    "Principal": "events.amazonaws.com",
+    "SourceArn": {
+     "Fn::GetAtt": [
+      "sagemakerpull5EA4B586",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/pull_from_mdb/AllowEventBridge"
+   }
+  },
+  "pushtomdb25E95FA7": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "5062d8b1a1ad9816c68ca64ee5c763810d3bb7dfa1fb4803ea205204eea55f56.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "PYTHONPATH": "dependencies",
+      "LOG_LEVEL": "INFO",
+      "APP_ENV": "dev",
+      "region_name": "eu-central-1",
+      "model_endpoint": "sagemaker-soln-fpm-js-1234-demo-endpoint"
+     }
+    },
+    "Handler": "lambda_push_to_mdb.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "cdkconnectedvehicleatlastosagemakerrole58F4A134",
+      "Arn"
+     ]
+    },
+    "Runtime": "python3.12",
+    "Timeout": 60
+   },
+   "DependsOn": [
+    "cdkconnectedvehicleatlastosagemakerroleDefaultPolicy340FC708",
+    "cdkconnectedvehicleatlastosagemakerrole58F4A134"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/push_to_mdb/Resource",
+    "aws:asset:path": "asset.5062d8b1a1ad9816c68ca64ee5c763810d3bb7dfa1fb4803ea205204eea55f56",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "pushtomdbAllowEventBridgeC122E224": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "pushtomdb25E95FA7",
+      "Arn"
+     ]
+    },
+    "Principal": "events.amazonaws.com",
+    "SourceArn": {
+     "Fn::GetAtt": [
+      "clipushtolambdaDD443E49",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/push_to_mdb/AllowEventBridge"
+   }
+  },
+  "clipullingfrommongodb078ED31F": {
+   "Type": "AWS::Events::EventBus",
+   "Properties": {
+    "EventSourceName": "aws.partner/mongodb.com/stitch.trigger/6660485336339d17cb1ff766",
+    "Name": "aws.partner/mongodb.com/stitch.trigger/6660485336339d17cb1ff766"
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/cli_pulling_from_mongodb/Resource"
+   }
+  },
+  "sagemakerpull5EA4B586": {
+   "Type": "AWS::Events::Rule",
+   "Properties": {
+    "EventBusName": {
+     "Ref": "clipullingfrommongodb078ED31F"
+    },
+    "EventPattern": {
+     "source": [
+      "aws.partner/mongodb.com"
+     ]
+    },
+    "State": "ENABLED",
+    "Targets": [
+     {
+      "Arn": {
+       "Fn::GetAtt": [
+        "pullfrommdb93A0DEF6",
+        "Arn"
+       ]
+      },
+      "Id": "Target0"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/sagemaker-pull/Resource"
+   }
+  },
+  "sagemakerpullAllowEventRuleawscmslambdastackpullfrommdb51334CFBC8E66424": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "pullfrommdb93A0DEF6",
+      "Arn"
+     ]
+    },
+    "Principal": "events.amazonaws.com",
+    "SourceArn": {
+     "Fn::GetAtt": [
+      "sagemakerpull5EA4B586",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/sagemaker-pull/AllowEventRuleawscmslambdastackpullfrommdb51334CFB"
+   }
+  },
+  "clipushingtomongodb5E4AB8A2": {
+   "Type": "AWS::Events::EventBus",
+   "Properties": {
+    "Name": "cli_pushing_to_mongodb"
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/cli_pushing_to_mongodb/Resource"
+   }
+  },
+  "clipushtolambdaDD443E49": {
+   "Type": "AWS::Events::Rule",
+   "Properties": {
+    "EventBusName": {
+     "Ref": "clipushingtomongodb5E4AB8A2"
+    },
+    "EventPattern": {
+     "detail-type": [
+      "user-preferences"
+     ],
+     "source": [
+      "user-event"
+     ]
+    },
+    "State": "ENABLED",
+    "Targets": [
+     {
+      "Arn": {
+       "Fn::GetAtt": [
+        "pushtomdb25E95FA7",
+        "Arn"
+       ]
+      },
+      "Id": "Target0"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/cli_push_to_lambda/Resource"
+   }
+  },
+  "clipushtolambdaAllowEventRuleawscmslambdastackpushtomdb77008254067BD14F": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "pushtomdb25E95FA7",
+      "Arn"
+     ]
+    },
+    "Principal": "events.amazonaws.com",
+    "SourceArn": {
+     "Fn::GetAtt": [
+      "clipushtolambdaDD443E49",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/cli_push_to_lambda/AllowEventRuleawscmslambdastackpushtomdb77008254"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02P0U7EIBBFv2Xf6bi6xsRHu9HnpvsBm1k61rEFEgbcbAj/LlA1Pp175wQGHuD+cQ/7HV6l09PSrXyBdAqoF1VG5ySkPQUxaHEmX1Tr6vhut5QVo4E0upXqsHFwK+tbrVvKakVzmRDSW7Q6sLPV/c8DecMipWUlhzOKlJ3wUlE69FEvFHoUUvRFtqj0WtlHqaf/8hh/XlGYsxpJXPSaVLuofGpmOzf/K0o+OjtxaJuHW/hw9u4Az/C0+xTmzkcb2BCMG78Bov2OZy0BAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "aws-cms-lambda-stack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
