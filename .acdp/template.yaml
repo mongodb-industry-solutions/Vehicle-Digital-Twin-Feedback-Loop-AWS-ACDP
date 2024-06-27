@@ -75,8 +75,9 @@ spec:
     name: ACDP S3 Catalog Create
     input:
       componentId: ${{ parameters.componentId }}
-      assetsSourcePath: dir:../acdp/cms-vehicle-simulator/
-      docsSiteSourcePath: dir:../docs/components/cms-vehicle-simulator/site/
+ # need to confirm if we have added these paths correctly
+      assetsSourcePath: dir:../acdp/cms-mongodb-connected-vehicle/
+      docsSiteSourcePath: dir:../docs/components/cms-mongodb-connected-vehicle/site/
       entity:
         apiVersion: backstage.io/v1alpha1
         kind: Component
