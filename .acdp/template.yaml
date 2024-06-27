@@ -1,15 +1,18 @@
 apiVersion: scaffolder.backstage.io/v1beta3
+# apiVersion to be updated
 kind: Template
 metadata:
-  description: A CDK Python app to simulate vehicles using AWS IoT Core
-  name: cms-vehicle-simulator
+  description: A CDK app for Connected Vehicle (Digital Twin) Solution using MongoDB Atlas and Amazon SageMaker
+  name: cms-mongodb-connected-vehicle
   tags:
   - cms
-  - simulate
-  - ingest
-  title: CMS Vehicle Simulator Module
+  - mongodb
+  - atlas
+  - connected_vehicle
+  title: MongoDB Vehicle Digital Twin
   annotations:
     backstage.io/techdocs-ref: dir:../docs/components/cms-vehicle-simulator/
+  # annotations to be updated.
 spec:
   type: service
   output:
@@ -17,23 +20,26 @@ spec:
     - entityRef: ${{ steps.catalogRegister.output.entityRef }}
       icon: catalog
       title: Open in catalog
-  owner: aws solutions
+  # output to be updated 
+  owner: mongodb
+  
   parameters:
   - properties:
       componentId:
-        default: cms-vehicle-simulator
-        description: Unique name of the component
+        default: cms-mongodb-connected-vehicle
+        description: A vehicle digtial twin solution using MongoDB and Amazon SageMaker
+        # description to be clarified
         pattern: '[a-zA-Z][-a-zA-Z0-9]*[a-zA-Z]'
-        title: Name
+        title: Title
         type: string
         ui:field: EntityNamePicker
       description:
-        default: A CDK Python app to simulate vehicles using AWS IoT Core
-        description: Help others understand what this component is for.
+        default:  A CDK app for Connected Vehicle (Digital Twin) Solution using MongoDB Atlas and Amazon SageMaker.
+        description: This is a digital twin solution for connected vehicles developed using AWS CDK and Atlas Appservices to perform analysis on telemetry data
         title: Description
         type: string
       owner:
-        description: Owner of the component
+        description: MongoDB
         title: Owner
         type: string
         ui:field: OwnerPicker
@@ -45,7 +51,9 @@ spec:
     required:
     - componentId
     - owner
-    title: Provide the required information
+    title: MongoDB Vehicle Digital Twin
+    
+# Need to understand how to populate properties --> appUniqueID and userEmail
   - properties:
       appUniqueId:
         default: cms
