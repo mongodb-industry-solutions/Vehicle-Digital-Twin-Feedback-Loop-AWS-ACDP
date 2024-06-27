@@ -1,5 +1,5 @@
 apiVersion: scaffolder.backstage.io/v1beta3
-# apiVersion to be updated
+# Q - do we need to updated the apiVersion?
 kind: Template
 metadata:
   description: A CDK app for Connected Vehicle (Digital Twin) Solution using MongoDB Atlas and Amazon SageMaker
@@ -12,7 +12,7 @@ metadata:
   title: MongoDB Vehicle Digital Twin
   annotations:
     backstage.io/techdocs-ref: dir:../docs/components/cms-vehicle-simulator/
-  # annotations to be updated.
+  # Q - do we need to update annotations?
 spec:
   type: service
   output:
@@ -20,7 +20,7 @@ spec:
     - entityRef: ${{ steps.catalogRegister.output.entityRef }}
       icon: catalog
       title: Open in catalog
-  # output to be updated 
+  # Q - do we need to update the icon and title values 
   owner: mongodb
   
   parameters:
