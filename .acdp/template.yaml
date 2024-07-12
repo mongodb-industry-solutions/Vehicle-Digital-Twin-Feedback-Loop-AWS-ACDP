@@ -8,7 +8,7 @@ metadata:
   - cms
   - mongodb
   - atlas
-  - connected_vehicle
+  - connectedvehicle
   title: MongoDB Vehicle Digital Twin
   annotations:
     backstage.io/techdocs-ref: dir:../docs/components/cms-vehicle-simulator/
