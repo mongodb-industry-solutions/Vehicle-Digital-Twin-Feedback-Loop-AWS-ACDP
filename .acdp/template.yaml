@@ -104,8 +104,6 @@ spec:
     input:
       entityRef: ${{ steps.catalogRegister.output.entityRef }}
       buildParameters:
-      - name: CFN_TEMPLATE_URL
-        value: UNSET
       - name: APP_UNIQUE_ID
         value: ${{ parameters.appUniqueId }}
       - name: USER_EMAIL
