@@ -49,7 +49,8 @@ phases:
 
          - echo $ATLAS_APP_ID
 
-         - curl_output=$(curl -s --request POST --header 'Content-Type:application/json' --header 'Accept:application/json'  --data "{\"username\":\"$ATLAS_PUBLIC_KEY\", \"apiKey\": \"$ATLAS_PRIVATE_KEY\"}" https://services.cloud.mongodb.com/api/admin/v3.0/auth/providers/mongodb-cloud/login)
+         - >-
+            curl_output=$(curl -s --request POST --header 'Content-Type:application/json' --header 'Accept:application/json'  --data "{\"username\":\"$ATLAS_PUBLIC_KEY\", \"apiKey\": \"$ATLAS_PRIVATE_KEY\"}" https://services.cloud.mongodb.com/api/admin/v3.0/auth/providers/mongodb-cloud/login)
 
          - ACCESS_TOKEN=$(echo "$curl_output" | jq -r '.access_token')
 
@@ -58,14 +59,14 @@ phases:
          #  - read -r project_id client_app_id <<< "$(awk \'$ATLAS_APP_ID {print $2, $3}\' appservices_output.log)"
          - read -r PROJECT_ID <<< $(appservices  apps list -f json | jq -r --arg ATLAS_APP_ID "$ATLAS_APP_ID" '.data[] | select(.["Client App ID"] == $ATLAS_APP_ID) | .["Project ID"]')
          - read -r _ID <<< $(appservices  apps list -f json | jq -r --arg ATLAS_APP_ID "$ATLAS_APP_ID" '.data[] | select(.["Client App ID"] == $ATLAS_APP_ID) | .["_id"]')
-         - echo " _ID: $_ID"
-         - echo "Project ID: $PROJECT_ID"
-         - echo "Client APP ID: $ATLAS_APP_ID"
+         - echo " _ID - $_ID"
+         - echo "Project ID - $PROJECT_ID"
+         - echo "Client APP ID - $ATLAS_APP_ID"
 
          - curl_output=$(curl -s --request GET --header "Authorization:Bearer ${ACCESS_TOKEN}" "https://services.cloud.mongodb.com/api/admin/v3.0/groups/${PROJECT_ID}/apps/${_ID}/triggers")
-         - echo "Curl output: $curl_output"
+         - echo "Curl output - $curl_output"
          - export TRIGGER_ID=$(echo "$curl_output" | jq -r '.[] | select(.name == "eventbridge_publish_battery_telemetry") | ._id')
-         - echo "Trigger ID: $TRIGGER_ID"
+         - echo "Trigger ID - $TRIGGER_ID"
          - echo "Creating a user for the app..."
 
          # New project created, user validation not requried.       
