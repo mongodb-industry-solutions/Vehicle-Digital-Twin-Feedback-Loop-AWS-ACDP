@@ -80,6 +80,7 @@ spec:
           annotations:
             aws.amazon.com/acdp-deploy-on-create: "true"
             backstage.io/techdocs-ref: dir:.
+            backstage.io/source-location: https://github.com/aws-sansalex/Vehicle-Digital-Twin-Feedback-Loop-AWS-ACDP.git
           description: ${{parameters.description}}
           name: ${{parameters.componentId}}
           namespace: acdp

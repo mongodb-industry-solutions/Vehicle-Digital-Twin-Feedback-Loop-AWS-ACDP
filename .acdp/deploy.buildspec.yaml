@@ -4,7 +4,6 @@ phases:
    install:
       commands:
          - npm install -g aws-cdk
-         - git clone https://github.com/aws-sansalex/Vehicle-Digital-Twin-Feedback-Loop-AWS-ACDP.git
          - ( cd cdk/cms-cdk && pip3 install -r requirements.txt )
          - pip3 install -r requirements-dev.txt
          - 
