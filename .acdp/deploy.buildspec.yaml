@@ -3,6 +3,7 @@ version: 0.2
 phases:
    install:
       commands:
+         - ls -al .
          - npm install -g aws-cdk
          - ( cd cdk/cms-cdk && pip3 install -r requirements.txt )
          - pip3 install -r requirements-dev.txt
