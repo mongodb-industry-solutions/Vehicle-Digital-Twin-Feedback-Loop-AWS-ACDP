@@ -11,7 +11,7 @@ metadata:
   - connectedvehicle
   title: MongoDB Vehicle Digital Twin
   annotations:
-    backstage.io/techdocs-ref: dir:../docs/components/cms-vehicle-simulator/
+    backstage.io/techdocs-ref: dir:../docs/components/cms-mongodb-connected-vehicle/
   # Q - do we need to update annotations?
 spec:
   type: service
