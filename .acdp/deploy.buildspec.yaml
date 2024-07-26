@@ -62,9 +62,7 @@ phases:
          - echo "Project ID: $PROJECT_ID"
          - echo "Client APP ID: $ATLAS_APP_ID"
 
-         - curl_output=$(curl -s --request GET \
-         --header "Authorization:Bearer ${ACCESS_TOKEN}" \
-         "https://services.cloud.mongodb.com/api/admin/v3.0/groups/${PROJECT_ID}/apps/${_ID}/triggers")
+         - curl_output=$(curl -s --request GET --header "Authorization:Bearer ${ACCESS_TOKEN}" "https://services.cloud.mongodb.com/api/admin/v3.0/groups/${PROJECT_ID}/apps/${_ID}/triggers")
          - echo "Curl output: $curl_output"
          - export TRIGGER_ID=$(echo "$curl_output" | jq -r '.[] | select(.name == "eventbridge_publish_battery_telemetry") | ._id')
          - echo "Trigger ID: $TRIGGER_ID"
