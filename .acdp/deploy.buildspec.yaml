@@ -6,13 +6,10 @@ phases:
          - ls -al .
          - npm install -g aws-cdk
          - ( cd cdk/cms-cdk && pip3 install -r requirements.txt )
-         - pip3 install -r requirements-dev.txt
-         - 
-         - ( cd AWS_Lambda_Stack && pip3 install --target ./dependencies pymongo boto3  --upgrade )
+         - ( cd cdk/cms-cdk && pip3 install -r requirements-dev.txt )
+         - ( cd cdk/cms-cdk/AWS_Lambda_Stack && pip3 install --target ./dependencies pymongo boto3  --upgrade )
 
          - npm install -g atlas-app-services-cli
-
-
    build:
       commands:
          - echo "Welcome to the CMS deployment of DigitalTwin Solution with MongoDB Atlas and AWS services"
