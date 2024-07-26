@@ -63,7 +63,6 @@ spec:
         ui:disabled: true
     required:
     - appUniqueId
-    - userEmail
     title: Provide the Module Configuration
   steps:
   - action: aws:acdp:catalog:create
