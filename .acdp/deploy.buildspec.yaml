@@ -19,6 +19,8 @@ phases:
          - cd cdk/cms-cdk
 
          - echo " Bootstrap for AWS CDK"
+         # cdk bootstrap requires additional permissions to deploy, the default acdp role is insufficient for this and
+         # the following cdk deploy commands
          - cdk bootstrap aws://$AWS_ACCOUNT_ID/$AWS_REGION
 
          - echo "Deploy the MongoDB Atlas"
