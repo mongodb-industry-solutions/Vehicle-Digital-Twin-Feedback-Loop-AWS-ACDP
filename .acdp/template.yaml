@@ -61,10 +61,6 @@ spec:
         title: App Unique ID
         type: string
         ui:disabled: true
-      userEmail:
-        description: The user E-Mail to access the UI
-        title: User Email
-        type: string
     required:
     - appUniqueId
     - userEmail
@@ -76,7 +72,7 @@ spec:
     input:
       componentId: ${{ parameters.componentId }}
  # need to confirm if we have added these paths correctly
-      assetsSourcePath: dir:../acdp/cms-mongodb-connected-vehicle/
+      assetsSourcePath: dir:../
       docsSiteSourcePath: dir:../docs/components/cms-mongodb-connected-vehicle/site/
       entity:
         apiVersion: backstage.io/v1alpha1
@@ -84,6 +80,7 @@ spec:
         metadata:
           annotations:
             aws.amazon.com/acdp-deploy-on-create: "true"
+            backstage.io/techdocs-ref: dir:.
           description: ${{parameters.description}}
           name: ${{parameters.componentId}}
           namespace: acdp
