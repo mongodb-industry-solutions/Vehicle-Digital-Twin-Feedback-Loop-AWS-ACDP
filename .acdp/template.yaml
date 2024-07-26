@@ -102,5 +102,3 @@ spec:
       buildParameters:
       - name: APP_UNIQUE_ID
         value: ${{ parameters.appUniqueId }}
-      - name: USER_EMAIL
-        value: ${{ parameters.userEmail }}
