@@ -4,6 +4,8 @@ phases:
    install:
       commands:
          - ls -al .
+         - ls -al cdk
+         - ls -al cdk/cms-cdk
          - npm install -g aws-cdk
          - ( cd cdk/cms-cdk && pip3 install -r requirements.txt )
          - ( cd cdk/cms-cdk && pip3 install -r requirements-dev.txt )
