@@ -8,10 +8,10 @@ metadata:
   - cms
   - mongodb
   - atlas
-  - connected_vehicle
+  - connectedvehicle
   title: MongoDB Vehicle Digital Twin
   annotations:
-    backstage.io/techdocs-ref: dir:../docs/components/cms-vehicle-simulator/
+    backstage.io/techdocs-ref: dir:../docs/components/cms-mongodb-connected-vehicle/
   # Q - do we need to update annotations?
 spec:
   type: service
@@ -61,13 +61,8 @@ spec:
         title: App Unique ID
         type: string
         ui:disabled: true
-      userEmail:
-        description: The user E-Mail to access the UI
-        title: User Email
-        type: string
     required:
     - appUniqueId
-    - userEmail
     title: Provide the Module Configuration
   steps:
   - action: aws:acdp:catalog:create
@@ -76,7 +71,7 @@ spec:
     input:
       componentId: ${{ parameters.componentId }}
  # need to confirm if we have added these paths correctly
-      assetsSourcePath: dir:../acdp/cms-mongodb-connected-vehicle/
+      assetsSourcePath: dir:../
       docsSiteSourcePath: dir:../docs/components/cms-mongodb-connected-vehicle/site/
       entity:
         apiVersion: backstage.io/v1alpha1
@@ -84,6 +79,8 @@ spec:
         metadata:
           annotations:
             aws.amazon.com/acdp-deploy-on-create: "true"
+            backstage.io/techdocs-ref: dir:.
+            backstage.io/source-location: https://github.com/aws-sansalex/Vehicle-Digital-Twin-Feedback-Loop-AWS-ACDP.git
           description: ${{parameters.description}}
           name: ${{parameters.componentId}}
           namespace: acdp
@@ -104,9 +101,5 @@ spec:
     input:
       entityRef: ${{ steps.catalogRegister.output.entityRef }}
       buildParameters:
-      - name: CFN_TEMPLATE_URL
-        value: UNSET
       - name: APP_UNIQUE_ID
         value: ${{ parameters.appUniqueId }}
-      - name: USER_EMAIL
-        value: ${{ parameters.userEmail }}
